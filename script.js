@@ -12,9 +12,8 @@ document.querySelector("form").addEventListener("submit", (e) => {
   }
   else{
   const scoreboardContainer = document.querySelector(".main_scoreboard-wrapper");
-//   console.log(scoreboardContainer)
-//   scoreboardContainer.classList.add("main-scoreboard");
   const scoreboard = document.createElement("div");
+  scoreboard.classList.add("main_scoreboard");
   scoreboard.innerHTML = `
      <div>
         <p class="main_player-name">${firstName} ${lastName}</p>
@@ -55,13 +54,26 @@ function generateDateAndTime() {
     console.log(time);
     return time;
 } 
-function sortBoard(){
-    const main_score = document.querySelectorAll(".main_scoreboard");
-    console.log(main_score);
-    let arr = [];
-    main_score.forEach((e) => arr.push(e));
-    console.log(arr)
+function sortBoard() {
+  const main_score = document.querySelectorAll(".main_scoreboard");
+  const scoreboardContainer = document.querySelector(
+    ".main_scoreboard-wrapper"
+  );
+
+  let sortedElements = Array.from(main_score).sort((a, b) => {
+    const scoreA = parseInt(a.querySelector(".main_player-score").innerText);
+    const scoreB = parseInt(b.querySelector(".main_player-score").innerText);
+
+    return scoreB - scoreA; 
+  });
+
+  scoreboardContainer.innerHTML = "";
+
+  sortedElements.forEach((element) => {
+    scoreboardContainer.appendChild(element);
+  });
 }
+
 
 // function activateBtnEventListener() {
 //   document.querySelectorAll(".main_scoreboard-btn-container").forEach((el) => {
@@ -88,30 +100,4 @@ function sortBoard(){
 // }
 
 // activateBtnEventListener();
-
-// function sortScoreBoard() {
-//   let scoreboardContainer = document.querySelector(".main_scoreboard-wrapper");
-
-//   let scoreBoards = document.querySelectorAll(".main_scoreboard");
-
-//   let elementsInArray = [];
-//   scoreBoards.forEach((el) => elementsInArray.push(el));
-
-//   console.log(elementsInArray);
-//   let sortedElements = elementsInArray
-//     .map((el) => {
-//       return el;
-//     })
-//     .sort((a, b) => {
-//       let numA = parseInt(a.children[2].textContent),
-//         numB = parseInt(b.children[2].textContent);
-
-//       if (numA > numB) return -1;
-//       if (numA < numB) return 1;
-//     });
-
-//   sortedElements.forEach((el) => {
-//     scoreboardContainer.append(el);
-//   });
-// }
 
