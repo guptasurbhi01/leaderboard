@@ -29,7 +29,7 @@ document.querySelector("form").addEventListener("submit", (e) => {
      `;
      scoreboardContainer.appendChild(scoreboard);
      sortBoard();
-//   activateBtnEventListener();
+  activateBtnEventListener();
   }
 });
 function generateDateAndTime() {
@@ -75,29 +75,29 @@ function sortBoard() {
 }
 
 
-// function activateBtnEventListener() {
-//   document.querySelectorAll(".main_scoreboard-btn-container").forEach((el) => {
-//     el.addEventListener("click", (e) => {
-//       let textContent = e.target.textContent;
-//       console.log(textContent);
-//       let scorePlayer = e.target.parentElement.parentElement.children[2];
-//       console.log(scorePlayer);
+function activateBtnEventListener() {
+  document.querySelectorAll(".main_scoreboard-btn-container").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      let textContent = e.target.textContent;
+      console.log(textContent);
+      let scorePlayer = e.target.parentElement.parentElement.children[2];
+      console.log(scorePlayer);
 
-//       if (textContent.length > 2) return;
+      if (textContent.length > 2) return;
 
-//       console.log(e.target.parentElement.parentElement);
-//       console.log("hi");
+      console.log(e.target.parentElement.parentElement);
+      console.log("hi");
 
-//       if (textContent === "🗑")
-//         return e.target.parentElement.parentElement.remove();
+      if (textContent === "🗑")
+        return e.target.parentElement.parentElement.remove();
 
-//       scorePlayer.textContent =
-//         parseInt(scorePlayer.textContent) + parseInt(textContent);
+      scorePlayer.textContent =
+        parseInt(scorePlayer.textContent) + parseInt(textContent);
 
-//       sortScoreBoard();
-//     });
-//   });
-// }
+      sortBoard();
+    });
+  });
+}
 
-// activateBtnEventListener();
+activateBtnEventListener();
 
